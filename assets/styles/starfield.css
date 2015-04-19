@@ -55,6 +55,7 @@ p {
 }
 #leaderboard #scoreline {
     position: relative;
+    margin-bottom: 20px;
 }
 #leaderboard #nick {
     position: relative;

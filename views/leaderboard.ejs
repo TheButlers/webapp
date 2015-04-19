@@ -3,9 +3,11 @@
     <div class="col-md-12 text-center">
       <h1 id="title">Best Top Uncle Scores</h1>
     </div>
+    <% _.each(users, function(user) { %>
     <div id="scoreline" class="col-md-10 col-md-offset-1">
-      <p id="nick">Nickname..................................</p>
-      <p id="score" class="pull-right">111</p>
+      <p id="nick"><%= user.auth.username %>..................................</p>
+      <p id="score" class="pull-right"><%= user.score %></p>
     </div>
+    <% }); %>
   </div>
 </div>

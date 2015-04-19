@@ -8,14 +8,23 @@
 
 module.exports = {
 
-  attributes: require('waterlock').models.user.attributes({
+    tableName: 'user_waterlock',
     
-    /* e.g.
-    nickname: 'string'
-    */
+    attributes: require('waterlock').models.user.attributes({
+	
+	fullname: {
+	    type: 'string',
+	    required: true
+	},
+
+	score: {
+	    type: 'integer',
+	    required: true,
+	    defaultsTo: 0
+	}
+	
+    }),
     
-  }),
-  
-  beforeCreate: require('waterlock').models.user.beforeCreate,
-  beforeUpdate: require('waterlock').models.user.beforeUpdate
+    beforeCreate: require('waterlock').models.user.beforeCreate,
+    beforeUpdate: require('waterlock').models.user.beforeUpdate
 };

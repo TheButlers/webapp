@@ -27,13 +27,6 @@ module.exports.routes = {
 	locals: {
 	    layout: 'layout-leaderboard'
 	}
-    },
-
-    '/leaderboard': {
-	view: 'leaderboard',
-	locals: {
-	    layout: 'layout-leaderboard'
-	}
     }
 
 };
