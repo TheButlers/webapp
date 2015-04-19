@@ -1,0 +1,16 @@
+{
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4"
+  },
+  "name": "webapp",
+  "version": "0.0.1",
+  "author": "The Butlers",
+  "private": true
+}
