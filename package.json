@@ -30,7 +30,7 @@
   "keywords": [],
   "scripts": {
     "start": "node app.js",
-    "debug": "node debug app.js",
+    "debug": "sudo nodemon app.js",
     "forever": "sudo forever start --uid 'thebutlers' -l ~/webapp/forever.log app.js"
   },
   "main": "app.js",
