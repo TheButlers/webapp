@@ -21,6 +21,11 @@ module.exports = {
 	    type: 'integer',
 	    required: true,
 	    defaultsTo: 0
+	},
+
+	exercises: {
+	    collection: 'exercise',
+	    via: 'user'
 	}
 	
     }),

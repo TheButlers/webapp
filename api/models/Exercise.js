@@ -16,6 +16,11 @@ module.exports = {
 	    required: true
 	},
 
+	user: {
+	    model: 'user',
+	    // require: true <- this is for later!
+	},
+
 	startTime: {
 	    type: 'datetime',
 	    required: true
