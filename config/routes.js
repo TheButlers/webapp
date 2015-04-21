@@ -27,6 +27,10 @@ module.exports.routes = {
 	locals: {
 	    layout: 'layout-leaderboard'
 	}
+    },
+
+    '/account': {
+	view: 'index'
     }
 
 };
