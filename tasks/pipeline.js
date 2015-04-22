@@ -34,7 +34,8 @@ var jsFilesToInject = [
     'js/dependencies/**/*.js',
 
     // Bower js files
-    'js/dist/**/*.js'
+    'js/dist/**/*.js',
+    'js/holder.js'
 ];
 
 
