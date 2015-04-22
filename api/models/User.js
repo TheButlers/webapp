@@ -17,6 +17,14 @@ module.exports = {
 	    required: true
 	},
 
+	age: {
+	    type: 'integer'
+	},
+
+	fitnessCorner: {
+	    type: 'string'
+	},
+	
 	score: {
 	    type: 'integer',
 	    required: true,

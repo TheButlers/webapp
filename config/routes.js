@@ -29,8 +29,12 @@ module.exports.routes = {
 	}
     },
 
-    '/account': {
+    '/home': {
 	view: 'index'
+    },
+
+    '/account': {
+	view: 'account'
     }
 
 };
