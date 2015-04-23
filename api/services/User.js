@@ -1,7 +1,7 @@
 module.exports = {
 
     computeScore: function(user, cb) {
-	User.findOne(user.id).populateAll().exec(function(err, user){
+	User.findOne(user).populateAll().exec(function(err, user){
 	    // compute score
 	    user.score = _.reduce(_.pluck(user.exercises, 'numberOfSteps'), function(total, n) {
 		return total + n;
