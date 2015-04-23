@@ -6,6 +6,7 @@
 	<h1><%= user.fullname %></h1>
 	<h3><%= user.age %> years old &mdash; from <%= user.fitnessCorner %></h3>
 	<h3>Also known as <em><%= user.auth.username %></em></h3>
+	<h3><strong>Health Score: </strong><%= user.ponderedScore %></h3>
       </div>
       <div class="col-sm-3 pull-right">
 	<img src="/images/avatar.png" alt="avatar" class="img-circle img-responsive">
@@ -21,24 +22,19 @@
 
   <div class="row achievements">
     <div class="col-sm-2 col-sm-offset-1">
-      <img src="holder.js/175x175/auto" class="img-responsive img-rounded">
-      <h5>Beginner Level</h5>
+      <img src="/images/01_color.png" class="img-responsive img-level">
     </div>
     <div class="col-sm-2">
-      <img src="holder.js/175x175/auto" class="img-responsive img-rounded">
-      <h5>Intermediate Level</h5>
+      <img src="/images/02_color.png" class="img-responsive img-level">
     </div>
     <div class="col-sm-2">
-      <img src="holder.js/175x175/auto" class="img-responsive img-rounded">
-      <h5>Advanced Level</h5>
+      <img src="/images/03_color.png" class="img-responsive img-level">
     </div>
     <div class="col-sm-2">
-      <img src="holder.js/175x175/auto" class="img-responsive img-rounded">
-      <h5>Professional Level</h5>
+      <img src="/images/04_color.png" class="img-responsive img-level active-level">
     </div>
     <div class="col-sm-2">
-      <img src="holder.js/175x175/auto" class="img-responsive img-rounded">
-      <h5>Expert Level</h5>
+      <img src="/images/05_color.png" class="img-responsive img-level">
     </div>
   </div>
 

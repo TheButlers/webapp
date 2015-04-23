@@ -42,3 +42,14 @@ body {
 .meetin5 {
     margin: 50px 0;
 }
+.achievements .col-sm-2 {
+    padding: 0;
+}
+.img-level {
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+.img-level.active-level {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
