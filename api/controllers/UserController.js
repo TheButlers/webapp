@@ -23,9 +23,20 @@ module.exports = require('waterlock').actions.user({
 	    _.each(results.medals, function(medal) {
 		medal.obtained = _.contains(_.pluck(medal.winners, 'id'), results.user.id);
 	    });
-	    res.view('account', {
-		user: results.user,
-		medals: results.medals
+	    async.map(results.user.friends, function(friend, cb) {
+		Friend.findOne(friend.id).populate('user').exec(cb);
+	    }, function(err, friends) {
+		sails.log.debug(friends);
+		async.map(friends, function(friend, cb) {
+		    User.findOne(friend.user.id).populate('auth').exec(cb);
+		}, function(err, friends) {
+		    sails.log.debug(friends);
+		    res.view('account', {
+			user: results.user,
+			medals: results.medals,
+			friends: friends
+		    });
+		});
 	    });
 	});
     },
@@ -40,6 +51,28 @@ module.exports = require('waterlock').actions.user({
 	});
     },
 
+    addFriend: function(req, res) {
+	async.series([
+	    function(cb) {
+		User.findOne(req.param('user1')).populateAll().exec(function(err, user) {
+		    if(err) return cb(err);
+		    user.friends.add(req.param('user2'));
+		    user.save(cb);
+		});
+	    },
+	    function(cb) {
+		User.findOne(req.param('user2')).populateAll().exec(function(err, user) {
+		    if(err) return cb(err);
+		    user.friends.add(req.param('user1'));
+		    user.save(cb);
+		});
+	    }
+	], function(err) {
+	    if(err) return res.json(err);
+	    res.json({success: 'friend added!'});
+	});
+    },
+    
     rfidAuth: function(req, res) {
 	User.findOne({rfidTag: req.param('rfid')}).populate('auth').exec(function(err, user) {
 	    if(err) return res.json(err);

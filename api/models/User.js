@@ -48,10 +48,27 @@ module.exports = {
 
 	rfidTag: {
 	    type: 'string'
+	},
+
+	friends: {
+	    collection: 'friend'
+	},
+
+	pic: {
+	    type: 'string',
 	}
 	
     }),
+
+    afterCreate: function(values, next) {
+	Friend.create({id:values.id, user: values.id}).exec(function(err) {
+	    if(err) sails.log.error(err);
+	    next(err);
+	});
+    },
     
     beforeCreate: require('waterlock').models.user.beforeCreate,
     beforeUpdate: require('waterlock').models.user.beforeUpdate
+
+
 };
