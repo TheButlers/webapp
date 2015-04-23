@@ -56,6 +56,10 @@ module.exports = {
 
 	pic: {
 	    type: 'string',
+	},
+
+	phone: {
+	    type: 'string'
 	}
 	
     }),

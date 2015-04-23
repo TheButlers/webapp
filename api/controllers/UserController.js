@@ -26,11 +26,9 @@ module.exports = require('waterlock').actions.user({
 	    async.map(results.user.friends, function(friend, cb) {
 		Friend.findOne(friend.id).populate('user').exec(cb);
 	    }, function(err, friends) {
-		sails.log.debug(friends);
 		async.map(friends, function(friend, cb) {
 		    User.findOne(friend.user.id).populate('auth').exec(cb);
 		}, function(err, friends) {
-		    sails.log.debug(friends);
 		    res.view('account', {
 			user: results.user,
 			medals: results.medals,

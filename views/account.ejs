@@ -66,7 +66,7 @@
       </div>
     </div>
     <div class="col-sm-4">
-      <button id="sms-<%= friend.auth.username.toLowerCase() %>" class="btn btn-primary meetin5" onclick="meetin5('<%= friend.auth.username.toLowerCase() %>')">SMS: Meet in 5</button>
+      <button id="sms-<%= friend.auth.username.toLowerCase() %>" class="btn btn-primary meetin5" onclick="meetin5('<%= friend.auth.username.toLowerCase() %>', '<%= friend.phone %>')">SMS: Meet in 5</button>
     </div>
   </div>
   <% }) %>
@@ -79,13 +79,10 @@
 </div>
 
 <script type="text/javascript">
-  var jojoHP = '+6581193783';
-  var tiboHP = '+6598525512';
-
-  function meetin5(username) {
+  function meetin5(username, phone) {
   console.log('sending sms...');
   io.socket.post('/sms/send', {
-  phoneNumber: jojoHP,
+  phoneNumber: phone,
   message: "I'm going to the fitness corner. Meet you there :)."
   }, function (resData){
   console.log(resData);
