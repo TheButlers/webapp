@@ -18,14 +18,13 @@
 <script>
   function refresh() {
   io.socket.get('/leaderboard/refresh', function(data) {
-  var updatedLeaderboard;
+  var updatedLeaderboard = "";
   _.each(data, function(user) {
-  updatedLeaderboard = "<div id='scoreline' class='col-md-10 col-md-offset-1'>";
+  updatedLeaderboard += "<div id='scoreline' class='col-md-10 col-md-offset-1'>";
     updatedLeaderboard += "<p id='nick'>"+user.auth.username+"....................................................................</p>";
     updatedLeaderboard += "<p id='score' class='pull-right'>"+user.ponderedScore+"</p>";
     updatedLeaderboard += "</div>"
   });
-  console.log(updatedLeaderboard);
   $('.leaderboard-refresh').html(updatedLeaderboard);
   setTimeout(refresh, 5000);
   });
