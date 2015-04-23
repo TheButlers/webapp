@@ -14,7 +14,7 @@ module.exports = {
 	var year = moment().format('YYYY');	
 	var month= moment().format('MM');
 	var day = moment().format('DD');
-	var hour = moment().tz("Asia/Singapore").format('ha');
+	var hour = moment().tz("Asia/Singapore").format('H');
 	var min = moment().format('mm');
 	var sec = moment().format('ss');
 	
