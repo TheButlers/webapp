@@ -13,7 +13,7 @@ module.exports = {
 	var phoneNumber = req.param('phoneNumber');
 	console.log(phoneNumber+' '+message);
 	if(message && phoneNumber) {
-	    //sms.send(message, phoneNumber);
+	    sms.send(message, phoneNumber);
 	    res.json({success: 'SMS sent!'});
 	} else {
 	    res.json({error: 'Wrong parameters!'});
