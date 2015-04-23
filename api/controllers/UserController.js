@@ -34,8 +34,18 @@ module.exports = require('waterlock').actions.user({
 	User.findOne(req.param('id')).exec(function(err, user) {
 	    user.medals.add(req.param('medal'));
 	    user.save(function(err, user) {
-		if(err) res.json(err);
+		if(err) return res.json(err);
 		res.json(user);
+	    });
+	});
+    },
+
+    rfidAuth: function(req, res) {
+	User.findOne({rfidTag: req.param('rfid')}).populate('auth').exec(function(err, user) {
+	    if(err) return res.json(err);
+	    res.json({
+		id: user.id,
+		username: user.auth.username
 	    });
 	});
     }

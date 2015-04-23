@@ -44,6 +44,10 @@ module.exports = {
 	medals: {
 	    collection: 'medal',
 	    via: 'winners'
+	},
+
+	rfidTag: {
+	    type: 'string'
 	}
 	
     }),
