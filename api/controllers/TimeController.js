@@ -11,12 +11,12 @@ module.exports = {
     index: function(req, res, next) {
 
 	var date = moment().tz("Asia/Singapore").format();
-	var year = moment().format('YYYY');	
-	var month= moment().format('MM');
-	var day = moment().format('DD');
-	var hour = moment().tz("Asia/Singapore").format('H');
-	var min = moment().format('mm');
-	var sec = moment().format('ss');
+	var year = parseInt(moment().format('YYYY'));
+	var month= parseInt(moment().format('MM'));
+	var day = parseInt(moment().format('DD'));
+	var hour = parseInt(moment().tz("Asia/Singapore").format('H'));
+	var min = parseInt(moment().format('mm'));
+	var sec = parseInt(moment().format('ss'));
 	
 	return res.json({
 	    date:date,

@@ -50,7 +50,6 @@
 	  <% if(session.authenticated) { %>
 	  <ul class="nav navbar-nav">
             <li class="active"><a href="/account"><%= session.user.fullname %></a></li>
-            <li><a href="/account/graphs">My exercises</a></li>
           </ul>
           <div class="navbar-right">
             <a class="btn btn-danger navbar-btn navbar-right" href="/auth/logout">Sign out</a>
