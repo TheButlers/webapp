@@ -3,8 +3,8 @@ module.exports = {
     computeScore: function(user, cb) {
 	User.findOne(user.id).populateAll().exec(function(err, user){
 	    // compute score
-	    user.score = _.sum(user.exercises, function(exercise) {
-		return exercise.numberOfSteps;
+	    user.score = _.reduce(_.pluck(user.exercises, 'numberOfSteps'), function(total, n) {
+		return total + n;
 	    });
 
 	    // age-based weighted score
