@@ -32,7 +32,7 @@ module.exports = {
 		    friends = _.reject(friends, {phone: null});
 		    if(friends.length > 0) {
 			var phone = friends[0].phone;
-			var message = friends[0].fullname+" arrived at the fitness corner. Let's join him?";
+			var message = user.fullname+" arrived at the fitness corner. Let's join him?";
 			sms.send(message, phone);
 		    }
 		    cb();
