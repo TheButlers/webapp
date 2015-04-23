@@ -24,8 +24,8 @@ module.exports = {
 	    month:month,
 	    day:day,
 	    hour:hour,
-	    min:min,
-	    sec:sec
+	    minute:min,
+	    seconde:sec
 	});
     }
     
