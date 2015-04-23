@@ -5,6 +5,7 @@
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 var moment = require('moment');
+var userServices = require('../services/userServices');
 
 
 module.exports = {
@@ -40,9 +41,21 @@ module.exports = {
 	    var start = moment(this.startTime);
 	    var stop = (this.stopTime) ? moment(this.stopTime) : moment();
 	    return stop.diff(start, 'seconds');
+	},
+
+    },
+
+    afterCreate: function(values, next) {
+	if(values.numberOfSteps!==0) {
+	    userServices.computeScore(values.id, values.numberOfSteps, function(err) {
+		if(err) return err;
+		next();
+	    });
+	} else {
+	    next();
 	}
-
+	
     }
-
+    
 };
 
