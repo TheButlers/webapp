@@ -46,15 +46,21 @@ module.exports = {
     },
 
     afterUpdate: function(values, next) {
-	if(values.numberOfSteps!==0) {
+	if(values.numberOfSteps !== 0) {
 	    userService.computeScore(values.user, function(err) {
-		if(err) return err;
-		next();
+		if(err) return sails.log.error(err);
+		next(err);
 	    });
 	} else {
 	    next();
 	}
-	
+    },
+
+    afterCreate: function(values, next) {
+	userService.notifyFriend(values.user, function(err) {
+	    if(err) return sails.log.error(err);
+	    next(err);
+	});
     }
     
 };
