@@ -47,7 +47,7 @@ module.exports = {
 
     afterUpdate: function(values, next) {
 	if(values.numberOfSteps!==0) {
-	    userService.computeScore(values.id, values.numberOfSteps, function(err) {
+	    userService.computeScore(values.id, function(err) {
 		if(err) return err;
 		next();
 	    });

@@ -1,9 +1,18 @@
 module.exports = {
 
-    computeScore: function(user, numberOfSteps, cb) {
+    computeScore: function(user, cb) {
 	User.findOne(user.id).populateAll().exec(function(err, user){
-	    user.score = user.score+numberOfSteps;
-	    console.log(user.score);
+	    // compute score
+	    user.score = _.sum(user.exercises, function(exercise) {
+		return exercise.numberOfSteps;
+	    });
+
+	    // age-based weighted score
+	    if (user.age >= 65) {
+		user.ponderedScore = parseInt(user.score*(2+(user.age-65)/5));
+	    } else {
+		user.ponderedScore = user.score;
+	    }
 	    user.save(cb);
 	});
     }

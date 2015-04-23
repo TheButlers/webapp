@@ -31,6 +31,11 @@ module.exports = {
 	    defaultsTo: 0
 	},
 
+	ponderedScore: {
+	    type: 'integer',
+	    defaultsTo: 0
+	},
+	
 	exercises: {
 	    collection: 'exercise',
 	    via: 'user'
