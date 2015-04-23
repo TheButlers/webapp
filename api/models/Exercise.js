@@ -5,7 +5,7 @@
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 var moment = require('moment');
-var userServices = require('../services/userServices');
+var userService = require('../services/User');
 
 
 module.exports = {
@@ -45,9 +45,9 @@ module.exports = {
 
     },
 
-    afterCreate: function(values, next) {
+    afterUpdate: function(values, next) {
 	if(values.numberOfSteps!==0) {
-	    userServices.computeScore(values.id, values.numberOfSteps, function(err) {
+	    userService.computeScore(values.id, values.numberOfSteps, function(err) {
 		if(err) return err;
 		next();
 	    });
