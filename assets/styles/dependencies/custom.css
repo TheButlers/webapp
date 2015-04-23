@@ -32,3 +32,10 @@ body {
     opacity: 1;
     filter: alpha(opacity=100);
 }
+.friend-name {
+    line-height: 130px;
+    font-size: 18pt;
+}
+.friend-row {
+    padding-top: 25px;
+}
