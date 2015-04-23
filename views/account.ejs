@@ -71,10 +71,13 @@
     <div class="col-sm-2 col-sm-offset-1">
       <img src="/images/<%= friend.auth.username.toLowerCase() %>.png" class="img-circle img-responsive">
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-5">
       <div class="row friend-name">
 	<p><strong><%= friend.fullname %></strong> (<%= friend.auth.username %>) &mdash; <%= friend.score %>pts</p>
       </div>
+    </div>
+    <div class="col-sm-4">
+      <button id="sms-<%= friend.auth.username.toLowerCase() %>" class="btn btn-primary meetin5" onclick="meetin5('<%= friend.auth.username.toLowerCase() %>')">SMS: Meet in 5</button>
     </div>
   </div>
   <% }) %>
@@ -85,3 +88,24 @@
     <p>&copy; The Butlers 2015. IoT Hackathon Singapore 2015.</p>
   </footer>
 </div>
+
+<script type="text/javascript">
+  var jojoHP = '+6581193783';
+  var tiboHP = '+6598525512';
+
+  function meetin5(username) {
+  console.log('sending sms...');
+  io.socket.post('/sms/send', {
+  phoneNumber: jojoHP,
+  message: "I'm going to the fitness corner. Meet you there :)."
+  }, function (resData){
+  console.log(resData);
+  if(Object.keys(resData).indexOf('error') > -1) {
+  $('#sms-'+username).attr('value', 'SMS: Error');
+  } else {
+  $('#sms-'+username).html('SMS: Sent').attr("disabled", true);
+  }
+  });
+  }
+</script>
+
