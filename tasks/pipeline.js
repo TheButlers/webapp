@@ -35,7 +35,8 @@ var jsFilesToInject = [
 
     // Bower js files
     'js/dist/**/*.js',
-    'js/holder.js'
+    'js/holder.js',
+    'js/lodash.js'
 ];
 
 

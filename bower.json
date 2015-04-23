@@ -8,7 +8,8 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.4",
-    "holderjs": "~2.6.0"
+    "holderjs": "~2.6.0",
+    "lodash": "~3.7.0"
   },
   "name": "webapp",
   "version": "0.0.1",

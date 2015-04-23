@@ -13,7 +13,14 @@ module.exports = {
 	    res.view('leaderboard', {
 		layout: 'layout-leaderboard',
 		users: users
-	    })
+	    });
+	});
+    },
+
+    refresh: function(req, res) {
+	User.find().populate('auth').sort('score DESC').limit(10).exec(function(err, users) {
+	    if(err) return res.json(err);
+	    res.json(users);
 	});
     }
     
