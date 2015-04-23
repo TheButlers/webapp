@@ -34,7 +34,8 @@ module.exports.routes = {
     },
 
     '/account': {
-	view: 'account'
+	controller: 'User',
+	action: 'account'
     }
 
 };

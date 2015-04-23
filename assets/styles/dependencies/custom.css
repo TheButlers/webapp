@@ -12,3 +12,23 @@ body {
 .awards h2 {
     padding-bottom: 25px;
 }
+.medal-desc {
+    line-height: 100px;
+}
+.col-sm-4.medal-img {
+    padding-right: 0;
+}
+.row.medals {
+    padding-top: 45px;
+}
+.row.medals h4 {
+    padding-bottom: 25px;
+}
+.row.medals img {
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+}
+.row.medals img.medal-obtained {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}

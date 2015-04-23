@@ -34,6 +34,11 @@ module.exports = {
 	exercises: {
 	    collection: 'exercise',
 	    via: 'user'
+	},
+
+	medals: {
+	    collection: 'medal',
+	    via: 'winners'
 	}
 	
     }),
