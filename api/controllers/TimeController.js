@@ -10,7 +10,7 @@ module.exports = {
 
     index: function(req, res, next) {
 
-
+	var date = moment().tz("Asia/Singapore").format();
 	var year = moment().format('YYYY');	
 	var month= moment().format('MM');
 	var day = moment().format('DD');
@@ -19,6 +19,7 @@ module.exports = {
 	var sec = moment().format('ss');
 	
 	return res.json({
+	    date:date,
 	    year:year,
 	    month:month,
 	    day:day,
