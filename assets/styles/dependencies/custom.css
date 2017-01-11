@@ -1,0 +1,55 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+.jumbotron.user-profile {
+    margin-bottom: 0;
+}
+.awards {
+    background-color: #9FCCD4;
+    padding: 30px 0;
+}
+.awards h2 {
+    padding-bottom: 25px;
+}
+.medal-desc {
+    line-height: 100px;
+}
+.col-sm-4.medal-img {
+    padding-right: 0;
+}
+.row.medals {
+    padding-top: 45px;
+}
+.row.medals h4 {
+    padding-bottom: 25px;
+}
+.row.medals img {
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+}
+.row.medals img.medal-obtained {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+.friend-name {
+    line-height: 130px;
+    font-size: 18pt;
+}
+.friend-row {
+    padding-top: 25px;
+}
+.meetin5 {
+    margin: 50px 0;
+}
+.achievements .col-sm-2 {
+    padding: 0;
+}
+.img-level {
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+.img-level.active-level {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}

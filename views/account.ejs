@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<div class="jumbotron user-profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 text-right">
+	<h1><%= user.fullname %></h1>
+	<h3><%= user.age %> years old &mdash; from <%= user.fitnessCorner %> &mdash; <%= user.ponderedScore %> pts</h3>
+	<h3>Also known as <em><%= user.auth.username %></em></h3>
+      </div>
+      <div class="col-sm-3 pull-right">
+	<img src="/images/<%= user.pic %>.png" alt="avatar" class="img-circle img-responsive">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid awards text-center">
+  <div class="row">
+    <h2>Achievements &amp; Awards</h2>
+  </div>
+
+  <div class="row achievements">
+    <div class="col-sm-2 col-sm-offset-1">
+      <img src="/images/01_color.png" class="img-responsive img-level">
+    </div>
+    <div class="col-sm-2">
+      <img src="/images/02_color.png" class="img-responsive img-level">
+    </div>
+    <div class="col-sm-2">
+      <img src="/images/03_color.png" class="img-responsive img-level">
+    </div>
+    <div class="col-sm-2">
+      <img src="/images/04_color.png" class="img-responsive img-level active-level">
+    </div>
+    <div class="col-sm-2">
+      <img src="/images/05_color.png" class="img-responsive img-level">
+    </div>
+  </div>
+
+  <div class="row medals">
+    <h4>Earn the medals below and show them to your friends!</h4>
+    <% _.each(medals, function(medal) { %>
+    <div class="col-sm-4">
+      <div class="row">
+	<div class="col-sm-4 medal-img">
+	  <img src="/images/<%= medal.img %>.png" class="img-responsive img-circle pull-right <% if(medal.obtained) { %> medal-obtained<% } %>">
+	</div>
+	<div class="col-sm-8 text-left">
+	  <p class="medal-desc"><%= medal.description %></p>
+	</div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>
+
+<div class="container">
+  <% _.each(friends, function(friend) { %>
+  <div class="row friend-row">
+    <div class="col-sm-2 col-sm-offset-1">
+      <img src="/images/<%= friend.pic %>.png" class="img-circle img-responsive">
+    </div>
+    <div class="col-sm-5">
+      <div class="row friend-name">
+	<p><strong><%= friend.fullname %></strong> (<%= friend.auth.username %>) &mdash; <%= friend.score %>pts</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <button id="sms-<%= friend.auth.username.toLowerCase() %>" class="btn btn-primary meetin5" onclick="meetin5('<%= friend.auth.username.toLowerCase() %>', '<%= friend.phone %>')">SMS: Meet in 5</button>
+    </div>
+  </div>
+  <% }) %>
+
+  <hr>
+
+  <footer>
+    <p>&copy; The Butlers 2015. IoT Hackathon Singapore 2015.</p>
+  </footer>
+</div>
+
+<script type="text/javascript">
+  function meetin5(username, phone) {
+  console.log('sending sms...');
+  io.socket.post('/sms/send', {
+  phoneNumber: phone,
+  message: "I'm going to the fitness corner. Meet you there :)."
+  }, function (resData){
+  console.log(resData);
+  if(Object.keys(resData).indexOf('error') > -1) {
+  $('#sms-'+username).attr('value', 'SMS: Error');
+  } else {
+  $('#sms-'+username).html('SMS: Sent').attr("disabled", true);
+  }
+  });
+  }
+</script>
+

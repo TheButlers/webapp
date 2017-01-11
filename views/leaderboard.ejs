@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<div id="leaderboard" class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1 id="title">Best Top Uncle Scores</h1>
+    </div>
+  </div>
+  <div class="row leaderboard-refresh">
+    <% _.each(users, function(user) { %>
+    <div id="scoreline" class="col-md-10 col-md-offset-1">
+      <p id="nick"><%= user.auth.username %>....................................................................</p>
+      <p id="score" class="pull-right"><%= user.ponderedScore %></p>
+    </div>
+    <% }); %>
+  </div>
+</div>
+
+<script>
+  function refresh() {
+  io.socket.get('/leaderboard/refresh', function(data) {
+  var updatedLeaderboard = "";
+  _.each(data, function(user) {
+  updatedLeaderboard += "<div id='scoreline' class='col-md-10 col-md-offset-1'>";
+    updatedLeaderboard += "<p id='nick'>"+user.auth.username+"....................................................................</p>";
+    updatedLeaderboard += "<p id='score' class='pull-right'>"+user.ponderedScore+"</p>";
+    updatedLeaderboard += "</div>"
+  });
+  $('.leaderboard-refresh').html(updatedLeaderboard);
+  setTimeout(refresh, 5000);
+  });
+  }
+
+  (function() {
+  setTimeout(refresh, 2000);
+  })();
+</script>
